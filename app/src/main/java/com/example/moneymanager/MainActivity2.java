@@ -27,7 +27,7 @@ public class MainActivity2 extends AppCompatActivity {
     SharedPreferences sp;
     SharedPreferences sp1;
     int pr=0;
-    int prEdit;
+    int prEdit=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,13 +55,17 @@ public class MainActivity2 extends AppCompatActivity {
         pr = sp1.getInt("pp", 0);
         editor.putInt("pp", pr + prEdit);
         editor.commit();
-        if (price != null && txt != null) {
+
+        if (price != null && txt!= null) {
 
             Intent i = new Intent(MainActivity2.this, MainActivity.class);
             i.putExtra("data", txt.getText().toString());
             i.putExtra("price", Integer.valueOf(price.getText().toString()));
             i.putExtra("total", pr);
             startActivity(i);
+        }
+        else{
+            Toast.makeText(this, "Enter details", Toast.LENGTH_SHORT).show();
         }
     }
 
